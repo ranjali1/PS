@@ -1,7 +1,7 @@
 async function fetchSpots(comp_id) {
     try {
     ///  const response = await fetch("http://localhost:8080/spot");
-      const response = await fetch("http://localhost:8080/spot", {
+      const response = await fetch(`${address}/spot`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({comp_id})
@@ -14,7 +14,7 @@ async function fetchSpots(comp_id) {
       const spots_left = spots.filter((spotsF) =>
             spotsF.side.includes("Left")
         );
-      const responseSec = await fetch("http://localhost:8080/section", {
+      const responseSec = await fetch(`${address}/section`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({comp_id})
@@ -104,7 +104,7 @@ async function fetchSpots(comp_id) {
 
 
   
-  const eventSource = new EventSource("http://localhost:8080/events");
+  const eventSource = new EventSource(`${address}/events`);
   
   eventSource.onmessage = async function (event) {
     const spots = await JSON.parse(event.data);

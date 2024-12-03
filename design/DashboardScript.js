@@ -5,7 +5,7 @@ document.getElementById("login-btn").addEventListener("click",function(event){
 });
 async function fetchCompanies() {
   try {
-    const response = await fetch("http://localhost:8080/dash");
+    const response = await fetch(`${address}/dash`);
     const cmps = await response.json();
    // renderCompanies(cmps);
 
@@ -50,7 +50,7 @@ async function fetchCompanies() {
 async function fetchPlace()
 {
   try{
-    const response = await fetch("http://localhost:8080/place");
+    const response = await fetch(`${address}/place`);
     const pls = await response.json();
 
     const filter = document.getElementById("filter");

@@ -10,6 +10,10 @@ const Spots = require("./Spots");
 const SectionManager = require("./SectionManager");
 const PlaceManager = require("./PlaceManager");
 
+const Connection = require("./DB/Connection");
+
+let db = new Connection();
+db.testConnection();
  const multer = require("multer");
  const path = require("path");
 

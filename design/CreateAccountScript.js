@@ -23,7 +23,7 @@ document.getElementById("AccountForm").addEventListener("submit", async function
 
         var img = await uploadFile();
         
-        const res = await fetch("http://localhost:8080/Create", {
+        const res = await fetch(`${address}/Create`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({compName, email, password, phone, place, img})

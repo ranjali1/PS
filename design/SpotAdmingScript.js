@@ -30,7 +30,7 @@ async function fetchSections()
     //     option.textContent = sec.section;
     //     sections.appendChild(option);
     // });
-    const responseSec = await fetch("http://localhost:8080/section", {
+    const responseSec = await fetch(`${address}/section`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({comp_id})
@@ -85,7 +85,7 @@ document.getElementById("addSpotForm").addEventListener("submit", async function
         if(btn.textContent === "Add Section")
         {
             console.log("it is section");
-            const res = await fetch("http://localhost:8080/addSectoin", {
+            const res = await fetch(`${address}/addSectoin`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({spotName, compID})
@@ -103,7 +103,7 @@ document.getElementById("addSpotForm").addEventListener("submit", async function
             var lat = data[0];
             var long = data[1];
    
-            const res = await fetch("http://localhost:8080/addSpot", {
+            const res = await fetch(`${address}/addSpot`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({spotName, selectedSide, secV, compID, lat, long})
