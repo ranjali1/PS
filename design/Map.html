@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Location on Satellite Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      function initMap() {
+        const map = L.map('map').setView([0, 0], 2);
+
+        // Add a satellite view tile layer
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmExOTEyMCIsImEiOiJjbTQ0YmFqa3owYWIzMmtzNHNud3Z2M2RiIn0.DBfoVP2G0Q25-rfYxLzV5g', {
+          attribution: '© OpenStreetMap contributors, © Mapbox',
+          maxZoom: 19 //19
+        }).addTo(map);
+
+        // Predefined spots
+        const spots = [
+          { name: "Spot 1", coords: [35.566285, 45.371900] }, // Example: NYC
+          { name: "Spot 2", coords: [35.566241, 45.371882] }, // Example: LA
+          { name: "Spot 3", coords: [35.566224, 45.371855] } // Example: Paris
+        ];
+
+        spots.forEach(spot => {
+            L.circleMarker(spot.coords, {
+                radius: 5, // Size of the circle
+                color: "#fff", // Border color
+                fillColor: "#fafafa", // Fill color
+                fillOpacity: 1 // Solid color
+            })
+                .addTo(map)
+                .bindPopup(`<b>${spot.name}</b>`)
+                .openPopup();
+              //  .bindTooltip(spot.name, { permanent: true, direction: "top" }); // Always show the name
+            });
+        //
+
+        // spots.forEach(spot => {
+        //     L.marker(spot.coords)
+        //         .addTo(map)
+        //         .bindTooltip(spot.name, { permanent: true, direction: "top" }); // Always show the name
+        //     });
+            //
+        // Add markers for each spot
+        // spots.forEach(spot => {
+        //   L.marker(spot.coords)
+        //     .addTo(map)
+        //     .bindPopup(`<b>${spot.name}</b>`)
+        //     .openPopup();
+        // });
+
+        // Adjust the map view to show all spots
+        const bounds = spots.map(spot => spot.coords);
+        map.fitBounds(bounds);
+       // map.setView(bounds, 19);
+        // User location
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            const userLocation = [position.coords.latitude, position.coords.longitude];
+            map.setView(userLocation, 15);
+
+            L.marker(userLocation).addTo(map).bindPopup("You are here");
+          }, function() {
+            alert("Geolocation failed.");
+          });
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+    </script>
+  </head>
+  <body onload="initMap()">
+    <h3>Current Location on Satellite Map</h3>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+  </body>
+</html>

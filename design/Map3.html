@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Location on Satellite Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      #map {
+        height: 100%; 
+        width: 100%;
+        margin: auto;
+      }
+
+      /* Style the custom pointer (marker) */
+      .leaflet-marker-icon {
+        width: 24px; 
+        height: 24px;
+        border-radius: 50%; 
+        background: radial-gradient(circle, #3a3a3a 0%, #5a5a5a 100%);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border: 2px solid #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .leaflet-marker-icon:hover {
+        transform: scale(1.2); /* Grow when hovered */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Enhanced shadow effect */
+      }
+
+      /* Style for the buttons */
+      .map-controls {
+        position: absolute;
+        bottom: 10px; /* Position the controls at the bottom */
+        right: 10px; /* Position the controls to the right */
+        z-index: 1000;
+      }
+
+      .map-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+      }
+
+      .map-button:hover {
+        background-color: #45a049;
+      }
+    </style>
+    <script>
+      let previousView = { lat: 0, lng: 0, zoom: 2 }; // Store the previous map view
+
+      function initMap() {
+        const map = L.map('map').setView([0, 0], 2);
+
+        // Add a satellite view tile layer with high resolution
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicmExOTEyMCIsImEiOiJjbTQ0YmFqa3owYWIzMmtzNHNud3Z2M2RiIn0.DBfoVP2G0Q25-rfYxLzV5g', {
+          attribution: '© OpenStreetMap contributors, © Mapbox',
+          maxZoom: 22,  // Set max zoom to 22 to allow zoom beyond 19
+          tileSize: 512,
+          zoomOffset: -1,
+          detectRetina: true // Ensure Retina support for better resolution on high-density displays
+        }).addTo(map);
+
+        // Predefined spots
+        const spots = [
+          { name: "Spot 1", coords: [35.566285, 45.371900] },
+          { name: "Spot 2", coords: [35.566241, 45.371882] },
+          { name: "Spot 3", coords: [35.566224, 45.371855] }
+        ];
+
+        // Add circle markers for spots
+        spots.forEach(spot => {
+          L.circleMarker(spot.coords, {
+            radius: 8,
+            color: "#545454",
+            fillColor: "#fafafa",
+            fillOpacity: 1
+          })
+            .addTo(map)
+            .bindPopup(`<b>${spot.name}</b>`);
+        });
+
+        // Adjust the map view to show all spots
+        const bounds = spots.map(spot => spot.coords);
+        map.fitBounds(bounds);
+        map.setZoom(20.2);
+
+        // User location
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            const userLocation = [position.coords.latitude, position.coords.longitude];
+            previousView = { lat: 0, lng: 0, zoom: 2 }; // Store initial view for "Back" button
+
+            map.setView(userLocation, 15);
+
+            L.marker(userLocation, {
+              icon: L.divIcon({
+                className: 'leaflet-marker-icon',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12],
+              })
+            }).addTo(map).bindPopup("You are here");
+          }, function () {
+            alert("Geolocation failed.");
+          });
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+
+        // Add the "Go to Current Location" button
+        const currentLocationButton = document.createElement('button');
+        currentLocationButton.className = 'map-button';
+        currentLocationButton.textContent = 'Go to Current Location';
+        currentLocationButton.onclick = function () {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+              const userLocation = [position.coords.latitude, position.coords.longitude];
+              map.setView(userLocation, 15);
+              L.marker(userLocation, {
+                icon: L.divIcon({
+                  className: 'leaflet-marker-icon',
+                  iconSize: [24, 24],
+                  iconAnchor: [12, 12],
+                })
+              }).addTo(map).bindPopup("You are here");
+            });
+          }
+        };
+
+        // Add the "Back to Previous Location" button
+        const backButton = document.createElement('button');
+        backButton.className = 'map-button';
+        backButton.textContent = 'Back';
+        backButton.onclick = function () {
+          map.setView([previousView.lat, previousView.lng], previousView.zoom);
+        };
+
+        const controls = document.createElement('div');
+        controls.className = 'map-controls';
+        controls.appendChild(currentLocationButton);
+        controls.appendChild(backButton);
+        document.body.appendChild(controls);
+      }
+    </script>
+  </head>
+  <body onload="initMap()">
+    <div id="map"></div>
+  </body>
+</html>

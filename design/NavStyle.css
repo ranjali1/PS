@@ -1,0 +1,36 @@
+nav {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: sticky;
+    width: 100%; /*n */
+  }
+  
+  nav button, span {
+      height: fit-content;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    border: none;
+    margin: 3px;
+    color: #fafafa;
+  }
+  nav button:hover{
+      background-color: #fafafa;
+      color: #4a90e2;
+  }
+  nav button:focus {
+      background-color: #fafafa; /* Same as hover background */
+      color: #4a90e2;           /* Same as hover text color */
+      height: fit-content;
+      outline: none; /* Remove default outline */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional: Add a subtle shadow */
+  }
+  nav
+  {
+      background-color: #4a90e2;
+      width: 100%;
+      padding: 1.1rem;
+      color: #fafafa;
+      
+  }

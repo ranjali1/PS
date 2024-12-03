@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Manager</title>
+  <link rel="stylesheet" href="SpotStyleV2.css">
+</head>
+<body>
+  <nav id="nav">
+    <div class="navbar">
+        <div class="logo">
+            <a href="#">Parking System</a>
+        </div>
+        <div class="menu-icon" id="menu-icon">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><button id="dash">Dashboard</button></li>
+            <li><button id="addSpot">Add Spot</button></li>
+            <li><button id="section">Add Section</button></li>
+            <li><button id="spots">Spots</button></li>
+            <li><button id="logout">Logout</button></li>
+        </ul>
+    </div>
+</nav>
+<script>
+  document.getElementById('menu-icon').addEventListener('click', () => {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('active'); // Toggle the 'active' class
+});
+
+</script>
+
+<script src="AdminNav.js"></script>
+
+  <div class="container">
+    <header>
+      <h1>Parking Manager v1.0</h1>
+      <button id="viewMap">View Map</button>
+    </header>
+    <div id="parking-grid" class="parking-grid"></div>
+  </div>
+  <script src="SpotScriptV2.js"></script>
+</body>
+</html>

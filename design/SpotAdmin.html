@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parking Area Dashboard</title>
+    <link rel="stylesheet" href="SpotAdminStyle.css">
+  </head>
+  <body id="body">
+    <!-- <nav>
+      <button id="addSpot">Add Spot</button> <span> | </span>
+      <button id="spots">Spots</button> <span> | </span>
+      <button>Add Section</button> <span> | </span>
+      <button>Edit Spot</button> <span> | </span>
+      <button>Edit Section</button> <span> | </span>
+    </nav> -->
+    
+    <nav id="nav">
+        <!-- <script src="AdminNav.js"></script>
+        <navigation-bar></navigation-bar> -->
+        <div class="navbar">
+          <div class="logo">
+              <a href="#">Parking System</a>
+          </div>
+          <div class="menu-icon" id="menu-icon">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+          </div>
+          <ul class="nav-links" id="nav-links">
+              <li><button id="dash">Dashboard</button></li>
+              <li><button id="addSpot">Add Spot</button></li>
+              <li><button id="section">Add Section</button></li>
+              <li><button id="spots">Spots</button></li>
+              <li><button id="logout">Logout</button></li>
+
+          </ul>
+        </div>
+
+    </nav>
+    <script src="AdminNav.js"></script>
+
+    <!-- <nav id="nav">
+      <script src="AdminNav.js"></script>
+      <div class="navbar">
+          <div class="logo">
+              <a href="#">Koye University</a>
+          </div>
+          <div class="menu-icon" id="menu-icon">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+          </div>
+          <ul class="nav-links" id="nav-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Departments</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </div>
+  </nav> -->
+  
+  <script>
+// Toggle navigation menu on smaller screens
+const menuIcon = document.getElementById("menu-icon");
+const navLinks = document.getElementById("nav-links");
+
+menuIcon.addEventListener("click", () => {
+  // Toggle the 'active' class to show/hide the menu
+  navLinks.classList.toggle("active");
+});
+
+
+  </script>
+  
+    <!-- <div class="nav-placeholder"></div> -->   
+
+    <main>
+        <header>
+            <label id="AddMessage">The Spot name has been added succ</label>
+        </header>
+
+      <form method="post" id="addSpotForm">
+        <label for="spotName" id="spotLabel">Spot Name</label>
+        <input
+          type="text"
+          placeholder="Enter spot name"
+          name="spotName"
+          id="spotName"
+          required
+        />
+        <div class="sides">
+          <label>Select a side</label><br />
+          <input type="radio" value="Right" name="side" id="sideRight" />
+          <label for="sideRight">Right</label>
+          <input type="radio" value="Left" name="side" id="sideLeft" />
+          <label for="sideLeft">Left</label>
+        </div>
+
+        <label for="sections">Select a section</label>
+        <select id="sections" name="sections">
+         </select>
+        <button type="submit" name="addSpot" value="Add" id="addSpotS">Add Spot</button>
+      </form>
+    </main>
+
+    <script src="SpotAdmingScript.js"></script>
+  </body>
+</html>

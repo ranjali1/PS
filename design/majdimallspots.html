@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parking Spots</title>
+    <link rel="stylesheet" href="majdistyles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Parking Spots</h1>
+      <div class="parking-grid">
+        <div class="left-side">
+          <h2>Spots 1-10</h2>
+          <div class="spot-container">
+            <button class="spot" id="A1">A1</button>
+            <button class="spot" id="A2">A2</button>
+            <button class="spot" id="A3">A3</button>
+            <button class="spot" id="A4">A4</button>
+            <button class="spot" id="A5">A5</button>
+            <button class="spot" id="A6">A6</button>
+            <button class="spot" id="A7">A7</button>
+            <button class="spot" id="A8">A8</button>
+            <button class="spot" id="A9">A9</button>
+            <button class="spot" id="A10">A10</button>
+          </div>
+        </div>
+        <div class="right-side">
+          <h2>Spots 11-20</h2>
+          <div class="spot-container">
+            <button class="spot" id="A11">A11</button>
+            <button class="spot" id="A12">A12</button>
+            <button class="spot" id="A13">A13</button>
+            <button class="spot" id="A14">A14</button>
+            <button class="spot" id="A15">A15</button>
+            <button class="spot" id="A16">A16</button>
+            <button class="spot" id="A17">A17</button>
+            <button class="spot" id="A18">A18</button>
+            <button class="spot" id="A19">A19</button>
+            <button class="spot" id="A20">A20</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Function to randomly assign available (green) or unavailable (red) class
+      function randomizeParkingSpotStatus() {
+        const spots = document.querySelectorAll(".spot");
+        spots.forEach((spot) => {
+          // Randomly choose between 'available' (green) or 'unavailable' (red)
+          const status = Math.random() > 0.5 ? "available" : "unavailable";
+          spot.classList.add(status);
+        });
+      }
+
+      // Call the function to randomize status when the page loads
+      randomizeParkingSpotStatus();
+
+      // Example of adding a click event listener to a spot
+      document.querySelectorAll(".spot").forEach((spot) => {
+        spot.addEventListener("click", function () {
+          if (this.classList.contains("unavailable")) {
+            alert(`Spot ${this.id} is not available.`);
+          } else {
+            alert(`You selected parking spot ${this.id}`);
+            // Here you can implement reservation logic, e.g. redirect or show a reservation form
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

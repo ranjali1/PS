@@ -1,0 +1,247 @@
+/* Reset default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Set up the body and container */
+body {
+  background-color: #F8F8F8;
+  color: #2B2B28;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between; /* Spread out the login and search */
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: linear-gradient(135deg, #F1D6AB, #E3B04B);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 30px;
+}
+
+/* Login Section (Left side of navigation) */
+.login {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
+#login-btn {
+  padding: 10px 15px;
+  background-color: #E3B04B;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#login-btn:hover {
+  background-color: #F1D6AB;
+}
+
+/* Search and Filter Inputs */
+#search {
+  width: 300px;
+  padding: 10px 15px;
+  border: 2px solid #E3B04B;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#search:focus {
+  width: 350px;
+  border-color: #F1D6AB;
+  background: #fff;
+  color: #2B2B28;
+}
+
+#filter {
+  padding: 10px 15px;
+  border: 2px solid #E3B04B;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #F1D6AB;
+  color: #2B2B28;
+}
+
+#filter:hover,
+#filter:focus {
+  border-color: #E3B04B;
+  background: #fff;
+  color: #2B2B28;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .login {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  #search, #filter {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  #search:focus {
+    width: 90%;
+  }
+}
+
+/* Main Content */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Container for the dashboard */
+.container {
+  width: 100%;
+  max-width: 90vw;
+  text-align: center;
+}
+
+/* Heading style */
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #2B2B28;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Flexbox layout for the card container */
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Individual card styles */
+.card {
+  background-color: white;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  background-color: #F8F8F8;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card h3 {
+  font-size: 1.8em;
+  margin-top: 20px;
+  color: #2B2B28;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 1.1em;
+  color: #777;
+  margin: 20px 0;
+  padding: 0 15px;
+}
+
+.card button {
+  background-color: #E3B04B;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.card button:hover {
+  background-color: #F1D6AB;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Adjustments for Cards */
+@media (max-width: 768px) {
+  .card-container {
+    justify-content: center;
+  }
+
+  .card {
+    width: 250px;
+    margin-bottom: 30px;
+  }
+
+  .card button {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+}
+
+/* Mobile Screen Adjustments */
+@media (max-width: 480px) {
+  .card-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card img {
+    height: 150px;
+  }
+
+  .card button {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1em;
+  }
+}

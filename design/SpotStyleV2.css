@@ -1,0 +1,322 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #1a1a1a;
+    color: white;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  nav {
+    width: 100%;
+    background-color: #4a90e2;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #E3B04B;
+    /* background-color: #FFB200; */
+  }
+  .navbar .logo a {
+    color: #F8F8F8;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .navbar .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  .navbar .menu-icon .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #F8F8F8;
+    border-radius: 3px;
+  }
+  .nav-links {
+    display: flex;
+    list-style: none;
+  }
+  
+  .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .nav-links li button {
+    color: #2B2B28;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links li button:hover {
+    color: #ddd;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Parking Grid Layout */
+  .parking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  /* Parking Section Styling */
+  .parking-section {
+    background: #222;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .parking-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffcc00;
+  }
+  
+  /* Parking Rows */
+  .row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .row + .row {
+    margin-top: 50px; /* Adds space between 1-5 and 6-10 within the same section */
+  }
+  
+  .slot {
+    flex: 1;
+    background: #444;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+  }
+  
+  .slot:hover {
+    transform: scale(1.05);
+    background: #555;
+  }
+  
+  /* Entry/Exit Divider */
+  .entry-exit-divider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    position: relative;
+  }
+  
+  /* Entry and Exit Labels */
+  .entry-label, .exit-label {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .entry-label {
+    background: #28a745;
+    color: white;
+    display: none;
+  }
+  
+  .exit-label {
+    background: #dc3545;
+    color: white;
+    display: none;
+  }
+  
+  /* Entry and Exit Arrows */
+  .entry-arrow, .exit-arrow {
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+  
+  .entry-arrow::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 20px;
+    height: 20px;
+    border: 5px solid #28a745;
+    border-width: 5px 5px 0 0;
+  }
+  
+  .exit-arrow::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(135deg);
+    width: 20px;
+    height: 20px;
+    border: 5px solid #dc3545;
+    border-width: 5px 0 0 5px;
+  }
+  
+
+  #viewMap {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #444, #666);
+    color: #fff;
+    border: 2px solid #555;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  #viewMap:hover {
+    background: linear-gradient(135deg, #666, #888);
+    border-color: #777;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  #viewMap:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  #viewMap:focus {
+    outline: none;
+    border: 2px solid #888;
+  }
+  
+  /* Media Queries for Different Interfaces */
+  
+  
+  /* Extra Small Devices (Phones, <576px) */
+  @media (max-width: 575.98px) {
+    
+    .parking-grid {
+      grid-template-columns: 1fr; /* Single column for small devices */
+    }
+    .slot {
+      font-size: 16px; /* Adjust slot text size */
+    }
+    .entry-label, .exit-label {
+      font-size: 14px; /* Adjust label size */
+    }
+  }
+  
+  /* Small Devices (Phones, 576px to 767px) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+
+    .parking-grid {
+      grid-template-columns: 1fr; /* Single column for small devices */
+    }
+  }
+  
+  /* Medium Devices (Tablets, 768px to 991px) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    
+    .parking-grid {
+      grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+    }
+    .slot {
+      padding: 15px; /* Adjust padding for better fit */
+    }
+  }
+  
+  /* Large Devices (Desktops, 992px to 1199px) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .parking-grid {
+      grid-template-columns: repeat(2, 1fr); /* Maintain two columns */
+    }
+  }
+  
+  /* Extra Large Devices (Desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .parking-grid {
+      grid-template-columns: repeat(2, 1fr); /* Two columns for wider screens */
+    }
+    .slot {
+      padding: 20px; /* Restore full padding */
+    }
+  }
+  
+
+  @media (max-width: 768px) {
+    .navbar .menu-icon {
+        display: block; /* Show the hamburger menu icon */
+    }
+
+    .nav-links {
+        display: none; /* Initially hide the navigation links */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Below the navbar */
+        left: 0;
+        width: 100%;
+        background-color: #E3B04B;;
+        z-index: 999; /* Ensure it's above other elements */
+    }
+
+    /* The 'active' class will make the menu visible */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-links li button {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+
+
+
+  @media (max-width: 480px) {
+    .navbar .logo button {
+      font-size: 1.2rem;
+    }
+  
+    .nav-links li button {
+      font-size: 1rem;
+    }
+  }  

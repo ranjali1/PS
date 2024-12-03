@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Location on Satellite Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      #map {
+        height: 100%; 
+        width: 100%;
+        margin: auto;
+      }
+
+      /* Style the custom pointer (marker) */
+      .leaflet-marker-icon {
+        width: 24px; 
+        height: 24px;
+        border-radius: 50%; 
+        background: radial-gradient(circle, #3a3a3a 0%, #5a5a5a 100%);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border: 2px solid #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .leaflet-marker-icon:hover {
+        transform: scale(1.2); /* Grow when hovered */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* Enhanced shadow effect */
+      }
+
+      /* Style for the buttons */
+      .map-controls {
+        position: absolute;
+        bottom: 10px; /* Position the controls at the bottom */
+        right: 10px; /* Position the controls to the right */
+        z-index: 1000;
+      }
+
+      .map-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease;
+      }
+
+      .map-button:hover {
+        background-color: #45a049;
+      }
+    </style>
+    <script src="SpotScriptMap.js">
+
+    </script>
+  </head>
+  <body >
+    <div id="map"></div>
+  </body>
+</html>

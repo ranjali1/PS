@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4ff;
+            margin: 0;
+        }
+
+        .parking-container {
+            display: grid;
+            grid-template-columns: 1fr 0.5fr 1fr;
+            gap: 10px;
+            max-width: 500px;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        /* Section Header */
+        .section-header {
+            grid-column: span 3;
+            background: #e0e7ff;
+            padding: 8px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        /* Entry/Exit Arrows */
+        .entry-exit {
+            font-size: 1.2em;
+            color: #4f46e5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 20px 0;
+        }
+
+        .arrow {
+            color: #4f46e5;
+            font-size: 1.5em;
+        }
+
+        /* Parking Slot Styles */
+        .parking-slot {
+            background: #d1d5db;
+            margin: 15px 0;
+            padding: 30px 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: center;
+        }
+
+        .left-slots .parking-slot {
+            transform: rotate(-15deg);
+            margin-right: 5px;
+        }
+
+        .right-slots .parking-slot {
+            transform: rotate(15deg);
+            margin-left: 5px;
+        }
+
+        /* Dashed Borders */
+        .left-slots, .right-slots {
+            position: relative;
+        }
+
+        .left-slots:before,
+        .right-slots:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            border-left: 2px dashed #9ca3af;
+        }
+
+        .left-slots:before {
+            left: 100%;
+        }
+
+        .right-slots:before {
+            right: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="parking-container">
+        <!-- Section Header -->
+        <div class="section-header">Section A</div>
+
+        <!-- Left Parking Slots -->
+        <div class="left-slots">
+            <div class="parking-slot">A2</div>
+            <div class="parking-slot">A4</div>
+            <div class="parking-slot">A6</div>
+            <div class="parking-slot">A8</div>
+        </div>
+
+        <!-- Entry/Exit Arrows -->
+        <div class="entry-exit">
+            <span class="arrow">⬇️ Entry</span>
+            <span class="arrow">⬇️</span>
+            <span class="arrow">⬇️</span>
+            <span class="arrow">⬇️ Exit</span>
+        </div>
+
+        <!-- Right Parking Slots -->
+        <div class="right-slots">
+            <div class="parking-slot">A9</div>
+            <div class="parking-slot">A10</div>
+            <div class="parking-slot">A11</div>
+            <div class="parking-slot">A13</div>
+        </div>
+    </div>
+
+</body>
+</html>

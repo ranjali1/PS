@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login_style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="welcome-section">
+        <h2>Welcome back!</h2>
+        <p>Don't have an account?</p>
+        <!-- <a href="./CreateAccount.html">Create an account</a> <br> -->
+        <!-- <button class="register-btn"> </button> -->
+        <a style="text-decoration: none;" class="register-btn" href="./CreateAccount.html">Create an account</a>
+      </div>
+      <div class="login-section">
+        <h2>Login</h2>
+        <!-- lerawa data kan bnera yan la js ka ba dly xot ba action w method akre asana -->
+        <form method="post" id="loginForm">
+          <div class="input-group">
+            <input id="email" type="text" placeholder="Email" />
+            <span class="icon">👤</span>
+          </div>
+          <div class="input-group">
+            <input id="password" type="password" placeholder="Password" />
+            <span class="icon">🔒</span>
+          </div>
+          <a href="tel:0770000000" class="forgot-password">Forgot password?</a>
+          <button id="loginForm" type="submit" class="login-btn">Login</button>
+          <br />
+          <p>or reach out to us</p>
+          <div class="social-icons">
+            <button class="social-icon">
+              <a href="tel: 078373234"><i class="fab fa-facebook-f"></i></a>
+            </button>
+            <button class="social-icon">
+              <a href="tel: 078373234"><i class="fab fa-instagram"></i></a>
+            </button>
+            <button class="social-icon">
+              <a href="tel: 078373234"><i class="fas fa-phone-alt"></i></a>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="LoginScript.js"></script>
+  </body>
+</html>

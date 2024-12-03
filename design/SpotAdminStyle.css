@@ -1,0 +1,247 @@
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Arial', sans-serif;
+background-color: #f4f4f9;
+color: #ffffff;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100%;
+width: 100%;
+padding: 1rem;
+}
+
+nav {
+  width: 100%;
+  background-color: #4a90e2;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #E3B04B;;
+}
+.navbar .logo a {
+  color: #f8f8f8;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.navbar .menu-icon {
+  display: none;
+  cursor: pointer;
+}
+.navbar .menu-icon .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+  border-radius: 3px;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links li button {
+  color: #2B2B28;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-links li button:hover {
+  color: #ddd;
+}
+
+
+header {
+text-align: center;
+margin-bottom: 2rem;
+}
+
+form select{
+margin-bottom: 10px;
+padding: 0.75rem;
+}
+
+header label {
+font-size: 1.5rem;
+font-weight: bold;
+color: #4a91e2bf;
+text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+display: none;
+}
+.addMessage
+{
+display: block;
+}
+
+main {
+width: 100%;
+max-width: 400px;
+
+margin-top: 9%;
+color: #333;
+}
+
+form {
+display: flex;
+flex-direction: column;
+
+background-color: #ffffff;
+border-radius: 10px;
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+padding: 2rem;
+}
+
+form label {
+font-weight: bold;
+margin-bottom: 0.5rem;
+font-size: 1rem;
+}
+
+form input[type="text"] {
+padding: 0.75rem;
+font-size: 1rem;
+margin-bottom: 1.5rem;
+border: 1px solid #ddd;
+border-radius: 5px;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+width: 100%;
+}
+
+form div {
+margin-bottom: 1.5rem;
+}
+
+form input[type="radio"] {
+margin-right: 0.5rem;
+transform: scale(1.2);
+}
+
+form button {
+background-color: #4a90e2;
+color: white;
+border: none;
+padding: 0.75rem;
+font-size: 1rem;
+border-radius: 5px;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+form button:hover {
+background-color: #3a78c0;
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+text-align: center;
+font-size: 0.875rem;
+color: white;
+margin-top: 2rem;
+text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  .navbar .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -250px; /* Initially hidden off-screen */
+    background-color: #4a90e2;
+    width: 250px;
+    height: 100%;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    transition: right 0.3s ease;
+  }
+
+  /* The 'active' class moves the menu into view */
+  .nav-links.active {
+    right: 0; /* Slide the menu in from the right */
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .nav-links li button {
+    font-size: 1.2rem;
+    font-weight: 200;
+  }
+
+  main {
+  padding: 1.5rem;
+  }
+
+form input[type="text"] {
+font-size: 0.9rem;
+}
+
+form button {
+padding: 0.6rem;
+font-size: 0.9rem;
+}
+}
+
+@media (max-width: 480px) {
+  .navbar .logo button {
+    font-size: 1.2rem;
+  }
+
+  .nav-links li button {
+    font-size: 1rem;
+  }
+
+header h1 {
+font-size: 1.5rem;
+}
+
+main {
+padding: 1rem;
+}
+
+form label {
+font-size: 0.9rem;
+}
+
+form button {
+font-size: 0.85rem;
+}
+
+footer {
+font-size: 0.75rem;
+}
+}
+
